@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  background: #555;
+}
+
+.content {
+  max-width:350px;
+  margin: auto;
+  padding:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+<head>
+<style>
+body {
+  background-image: url(' {{ url_for('static', filename='css/heart.jpg') }}');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+</style>
+</head>
+<body>
+
+ <h2 style="background-color:PaleVioletRed; text-align:center;font-size:180%;"><b>AI HEALTH COMPANION<b></h2>
+
+<form action="{{ url_for('predict')}}" method="post">
+ 
+
+<label for="Gender"style="background-color:DarkOrange;color:yellow;">Gender: <br>Male=1 Female=0</label><br>
+   <select id="Gender" name="Gender" required>
+          <option value="1">1</option>
+          <option value="0">0</option>       
+   </select><br><br>
+<label for="age"style="background-color:DarkOrange;color:yellow;" >Age:</label>
+  <input type="number" id="age" name="age" min="1"max="100"placeholder="Your age:  " required><br><br>
+<label for="currentsmoker"style="background-color:DarkOrange;color:yellow;" >Current Smoker:<br>0 = Non smoker 1 = Smoker</label><br>
+  <select id="currentsmoker" name="currentsmoker" required>
+          <option value="1">1</option>
+          <option value="0">0</option>       
+   </select><br><br>
+<label for="cigsPerDay"style="background-color:DarkOrange;color:yellow;" >Cigerates per day:</label>
+  <input type="number" id="cigsPerDay" name="cigsPerDay" min="0" placeholder="Estimated average" required> <br> <br>
+<label for="BPMeds"style="background-color:DarkOrange;color:yellow;" >BP Medications:<br> 0=Not on Blood Pressure medications <br> 1=Is on Blood Pressure medications </label><br>
+  <select id="BPMeds" name="BPMeds" required>
+          <option value="0">0</option>
+          <option value="1">1</option>       
+   </select><br><br>
+<label for="prevalentStroke"style="background-color:DarkOrange;color:yellow;" >Prevalent Stroke: <br>0=No 1=Yes</label><br>
+ <select id="prevalentStroke" name="prevalentStroke" required>
+          <option value="0">0</option>
+          <option value="1">1</option>       
+   </select><br><br>  
+<label for="prevalentHyp"style="background-color:DarkOrange;color:yellow;" >Prevalent Hypertension:<br>0=No 1=Yes</label><br>
+  <select id="prevalentHyp" name="prevalentHyp" required>
+          <option value="0">0</option>
+          <option value="1">1</option>       
+   </select><br><br>
+<label for="Diabetes"style="background-color:DarkOrange;color:yellow;" >Diabetes:<br> 0=Non Diabetic 1=Diabetic </label><br>
+    <select id="Diabetes" name="diabetes" required>
+          <option value="0">0</option>
+          <option value="1">1</option>        
+   </select><br> <br>
+<label for="totChol"style="background-color:DarkOrange;color:yellow;" >Total Cholesterol:</label>
+  <input type="number" id="totChol" name="totChol"min="0" value="totChol" required><br> <br>
+<label for="diaBP"style="background-color:DarkOrange;color:yellow;" >Diastolic BP:</label>
+  <input type="number" id="diaBP" name="diaBP" min="0" value="diaBP" required><br><br> 
+<label for="sysBP"style="background-color:DarkOrange;color:yellow;" >Systolic BP:</label>
+  <input type="number" id="sysBP" name="sysBP" min="0" value="sysBP" required><br> <br>
+<label for="BMI"style="background-color:DarkOrange;color:yellow;" >BMI:</label>
+  <input type="number" id="BMI" name="BMI" min="0" value="BMI" required><br> <br>
+<label for="heartRate"style="background-color:DarkOrange;color:yellow;" >Heart rate:</label>
+  <input type="number" id="heartRate" name="heartRate" min="0" value="heartRate" required><br><br>
+<label for="glucose"style="background-color:DarkOrange;color:yellow;" >Blood Sugar level:</label>
+  <input type="number" id="glucose" name="glucose" min="0"value="glucose" required><br><br>
+
+   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+</form> 
+{{ prediction_text }}
+
+</body>
+</html>
